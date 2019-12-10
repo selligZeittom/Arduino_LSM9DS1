@@ -38,6 +38,14 @@
 #define LSM9DS1_STATUS_REG_M       0x27
 #define LSM9DS1_OUT_X_L_M          0x28
 
+// samplerate values
+#define LSM9DS1_SR_14_5            14.5f
+#define LSM9DS1_SR_59_5            59.5f
+#define LSM9DS1_SR_119             119f
+#define LSM9DS1_SR_238             238f
+#define LSM9DS1_SR_476             476f
+#define LSM9DS1_SR_952             952f
+
 LSM9DS1Class::LSM9DS1Class(TwoWire& wire) :
   _wire(&wire)
 {
@@ -116,9 +124,22 @@ int LSM9DS1Class::accelerationAvailable()
   return 0;
 }
 
-float LSM9DS1Class::accelerationSampleRate()
+float LSM9DS1Class::accelerationGetSampleRate()
 {
+  // TODO : implement the sample rate
   return 119.0F;
+}
+
+int LSM9DS1Class::accelerationSetSampleRate(float sampleRate)
+{
+  // TODO : implement the sample rate
+  if(sampleRate != LSM9DS1_SR_14_5 && sampleRate != LSM9DS1_SR_59_5 && sampleRate != LSM9DS1_SR_119 && 
+      sampleRate != LSM9DS1_SR_238 && sampleRate != LSM9DS1_SR_476 && sampleRate != LSM9DS1_SR_952)
+  {
+    return -1;
+  }
+  
+  return 0;
 }
 
 int LSM9DS1Class::readGyroscope(float& x, float& y, float& z)

@@ -36,7 +36,9 @@ class LSM9DS1Class {
     // Gyroscope
     virtual int readGyroscope(float& x, float& y, float& z); // Results are in degrees/second.
     virtual int gyroscopeAvailable(); // Number of samples in the FIFO.
-    virtual float gyroscopeSampleRate(); // Sampling rate of the sensor.
+    virtual float gyroscopeGetSampleRate(); // Sampling rate of the sensor.
+    virtual int gyroscopeSetSampleRate(float sampleRate); // Sampling rate of the sensor.
+
 
     // Magnetometer
     virtual int readMagneticField(float& x, float& y, float& z); // Results are in uT (micro Tesla).
